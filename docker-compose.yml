@@ -1,0 +1,23 @@
+version: "3.8"
+
+services: 
+    # The Application
+    urls-app:
+        build: .
+        ports: 
+            - 3000:3000
+        volumes: 
+            - ./src:/opt/app/src
+        environment: 
+            - PORT=3000
+            - DATABASE='postgres://postgres:secret@localhost:5432/urls'
+        depends_on: 
+            - urls-postgres
+    # Database server
+    urls-postgres:
+        image: postgres:13-alpine
+        environment: 
+            - POSTGRES_PASSWORD=secret
+            - POSTGRES_DB=urls
+        logging: 
+            driver: none
