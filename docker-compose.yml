@@ -10,7 +10,7 @@ services:
             - ./src:/opt/app/src
         environment: 
             - PORT=3000
-            - DATABASE='postgres://postgres:secret@localhost:5432/urls'
+            - DATABASE=postgres://postgres:secret@urls-postgres:5432/urls
         depends_on: 
             - urls-postgres
     # Database server
@@ -21,3 +21,7 @@ services:
             - POSTGRES_DB=urls
         logging: 
             driver: none
+    urls-adminer:
+        image: adminer
+        ports: 
+            - 8080:8080
