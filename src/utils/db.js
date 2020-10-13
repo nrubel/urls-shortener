@@ -3,7 +3,7 @@ const {Sequelize} = require('sequelize')
 const CONNECTION_STRING = process.env.DATABASE || 'postgres://postgres:secret@localhost:5432/urls'
 const db = new Sequelize(CONNECTION_STRING)
 
-const User = db.define('user', {
+const User = db.define('users', {
     name: Sequelize.TEXT,
     email: {
         type: Sequelize.TEXT,
@@ -12,7 +12,7 @@ const User = db.define('user', {
     password: Sequelize.TEXT
 })
 
-const Direction = db.define('directionss', {
+const Direction = db.define('directions', {
     user_id: Sequelize.NUMERIC,
     destination: Sequelize.TEXT,
     hash: Sequelize.TEXT
@@ -20,7 +20,7 @@ const Direction = db.define('directionss', {
 
 db.sync()
     .then(e => console.log(`Database Synced`))
-    .catch(e => console.error(e))
+    .catch(e => console.error(e.message))
 
 module.exports = {
     db, User, Direction
