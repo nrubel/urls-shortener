@@ -13,6 +13,7 @@ const User = db.define('user', {
 })
 
 const Direction = db.define('directionss', {
+    user_id: Sequelize.NUMERIC,
     destination: Sequelize.TEXT,
     hash: Sequelize.TEXT
 })
