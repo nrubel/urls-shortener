@@ -5,9 +5,11 @@ const login = require('./controllers/login')
 const red = require('./controllers/redirect')
 const auth = require('./middlewares/auth')
 const errh = require('./middlewares/error_handler')
+const cors = require('./middlewares/cors')
 const app = express()
 
 // Middlewares
+app.use(cors)
 app.use(bp.json())
 app.use('/api', auth)
 

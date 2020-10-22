@@ -11,6 +11,7 @@ services:
         environment: 
             - PORT=3000
             - DATABASE=postgres://postgres:secret@urls-postgres:5432/urls
+            - CORS=yes
         depends_on: 
             - urls-postgres
     # Database server
